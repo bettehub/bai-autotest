@@ -1,0 +1,77 @@
+# JUnit 5 Test Template
+name: "Java JUnit 5"
+language: java
+framework: junit
+file_extension: ".java"
+
+# Package and imports
+package: "package ${package_name};"
+
+imports: |
+  import org.junit.jupiter.api.Test;
+  import org.junit.jupiter.api.BeforeEach;
+  import org.junit.jupiter.api.DisplayName;
+  import org.junit.jupiter.api.Assertions.*;
+  import org.springframework.web.client.RestTemplate;
+  import org.springframework.http.*;
+
+# Class structure
+class_start: |
+  @DisplayName("${description}")
+  public class ${test_name} {
+      
+      private RestTemplate restTemplate;
+      private String baseUrl = "${base_url}";
+
+class_end: "}"
+
+# Setup method
+setup: |
+      @BeforeEach
+      void setUp() {
+          restTemplate = new RestTemplate();
+      }
+
+# Test method
+test_start: |
+      @Test
+      @DisplayName("${description}")
+      void ${method_name}() throws Exception {
+
+test_end: "      }"
+
+# Step templates
+user_action: |
+          // 사용자 액션: ${action}
+          // TODO: UI 테스트 프레임워크를 사용하여 구현
+
+api_call: |
+          // API 호출: ${method} ${endpoint}
+          HttpHeaders headers = new HttpHeaders();
+          headers.setContentType(MediaType.APPLICATION_JSON);
+          HttpEntity<String> entity = new HttpEntity<>(${payload}, headers);
+          
+          ResponseEntity<String> response = restTemplate.exchange(
+              baseUrl + "${endpoint}",
+              HttpMethod.${method},
+              entity,
+              String.class
+          );
+          
+          assertEquals(HttpStatus.OK, response.getStatusCode());
+
+assertion: |
+          // 검증: ${description}
+          assertNotNull(response.getBody());
+          assertTrue(response.getBody().contains("${expected}"));
+
+navigation: |
+          // 네비게이션: ${action}
+          // 페이지 이동 로직
+
+wait: |
+          // 대기: ${timeout}ms
+          Thread.sleep(${timeout});
+
+note: |
+          // 노트: ${description}

@@ -1,0 +1,72 @@
+# Spring Boot Test Template
+name: "Spring Boot Test"
+language: java
+framework: spring
+file_extension: ".java"
+
+# Package and imports
+package: "package ${package_name};"
+
+imports: |
+  import org.junit.jupiter.api.Test;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.boot.test.context.SpringBootTest;
+  import org.springframework.boot.test.web.client.TestRestTemplate;
+  import org.springframework.boot.test.web.server.LocalServerPort;
+  import org.springframework.http.*;
+  import org.springframework.test.context.ActiveProfiles;
+  import static org.assertj.core.api.Assertions.assertThat;
+
+# Class structure
+class_start: |
+  @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+  @ActiveProfiles("test")
+  public class ${test_name} {
+      
+      @LocalServerPort
+      private int port;
+      
+      @Autowired
+      private TestRestTemplate restTemplate;
+
+class_end: "}"
+
+# Test method
+test_start: |
+      @Test
+      void ${method_name}() throws Exception {
+          String baseUrl = "http://localhost:" + port;
+
+test_end: "      }"
+
+# Step templates
+user_action: |
+          // 사용자 액션: ${action}
+          // Spring Boot에서는 MockMvc를 사용하여 UI 테스트 가능
+
+api_call: |
+          // API 호출: ${method} ${endpoint}
+          HttpHeaders headers = new HttpHeaders();
+          headers.setContentType(MediaType.APPLICATION_JSON);
+          headers.add("Cookie", "access_token=" + accessToken);
+          
+          HttpEntity<String> entity = new HttpEntity<>(${payload}, headers);
+          
+          ResponseEntity<String> response = restTemplate.exchange(
+              baseUrl + "${endpoint}",
+              HttpMethod.${method},
+              entity,
+              String.class
+          );
+          
+          assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+assertion: |
+          // 검증: ${description}
+          assertThat(response.getBody()).isNotNull();
+          assertThat(response.getBody()).contains("${expected}");
+
+navigation: |
+          // 네비게이션: ${action}
+          // 리다이렉트 테스트
+          assertThat(response.getHeaders().getLocation()).isNotNull();

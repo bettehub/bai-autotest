@@ -1,0 +1,77 @@
+# React Testing Library Template
+name: "React Testing Library"
+language: javascript
+framework: react-testing-library
+file_extension: ".test.jsx"
+
+# Imports
+imports: |
+  import React from 'react';
+  import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+  import userEvent from '@testing-library/user-event';
+  import '@testing-library/jest-dom';
+  import { rest } from 'msw';
+  import { setupServer } from 'msw/node';
+  import { ${component_name} } from './${component_name}';
+
+# MSW Server Setup
+setup: |
+  // MSW 서버 설정
+  const server = setupServer(
+    rest.post('${base_url}/api/v1/users/login', (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          access_token: 'mock-jwt-token',
+          user: { id: '1', email: 'test@example.com' }
+        })
+      );
+    })
+  );
+  
+  beforeAll(() => server.listen());
+  afterEach(() => server.resetHandlers());
+  afterAll(() => server.close());
+
+# Test structure
+test_start: |
+  describe('${test_name}', () => {
+    let user;
+    
+    beforeEach(() => {
+      user = userEvent.setup();
+    });
+    
+    test('${description}', async () => {
+      render(<${component_name} />);
+
+test_end: |
+    });
+  });
+
+# Step templates
+user_action: |
+      // 사용자 액션: ${action}
+      const ${element} = screen.getByRole('${role}', { name: /${text}/i });
+      await user.click(${element});
+
+api_call: |
+      // API 호출: ${method} ${endpoint}
+      // MSW로 모킹된 API 호출이 자동으로 처리됨
+
+assertion: |
+      // 검증: ${description}
+      await waitFor(() => {
+        expect(screen.getByText(/${expected}/i)).toBeInTheDocument();
+      });
+
+navigation: |
+      // 네비게이션 확인: ${action}
+      await waitFor(() => {
+        expect(window.location.pathname).toBe('${path}');
+      });
+
+input: |
+      // 입력: ${description}
+      const input = screen.getByLabelText(/${label}/i);
+      await user.type(input, '${value}');
