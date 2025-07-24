@@ -3,7 +3,7 @@
 ## 1. 프로젝트 설치
 
 ```bash
-cd /Users/bettehub/Dev/devai/bai-autotest
+cd /Users/bettehub/Dev/bai/bai-autotest
 pip install -e .
 ```
 
@@ -22,9 +22,9 @@ pip install -e .
     "bai-autotest": {
       "command": "/Users/bettehub/.pyenv/versions/3.11.9/bin/python",
       "args": ["-m", "bai_test_mcp.mcp.server"],
-      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "cwd": "/Users/bettehub/Dev/bai/bai-autotest",
       "env": {
-        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src"
+        "PYTHONPATH": "/Users/bettehub/Dev/bai/bai-autotest/src"
       }
     }
   }
@@ -34,7 +34,7 @@ pip install -e .
 ### 방법 2: 글로벌 설치 후 사용
 ```bash
 # 패키지 전역 설치
-pip install /Users/bettehub/Dev/devai/bai-autotest
+pip install /Users/bettehub/Dev/bai/bai-autotest
 
 # Cursor settings.json에 추가
 {
@@ -104,7 +104,7 @@ sequenceDiagram
 
 2. **MCP 서버 직접 테스트**
    ```bash
-   cd /Users/bettehub/Dev/devai/bai-autotest
+   cd /Users/bettehub/Dev/bai/bai-autotest
    /Users/bettehub/.pyenv/versions/3.11.9/bin/python -m bai_test_mcp.mcp.server
    ```
 

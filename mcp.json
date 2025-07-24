@@ -6,9 +6,9 @@
         "-m",
         "bai_test_mcp.mcp.server"
       ],
-      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "cwd": "/Users/bettehub/Dev/bai/bai-autotest",
       "env": {
-        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src"
+        "PYTHONPATH": "/Users/bettehub/Dev/bai/bai-autotest/src"
       }
     }
   }

@@ -46,9 +46,9 @@ nano ~/Library/Application\ Support/Claude/claude_desktop_config.json
         "-m",
         "bai_test_mcp.mcp.server"
       ],
-      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "cwd": "/Users/bettehub/Dev/bai/bai-autotest",
       "env": {
-        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src"
+        "PYTHONPATH": "/Users/bettehub/Dev/bai/bai-autotest/src"
       }
     }
   }
@@ -63,9 +63,9 @@ nano ~/Library/Application\ Support/Claude/claude_desktop_config.json
     "bai-autotest": {
       "command": "/Users/bettehub/.pyenv/versions/3.11.9/bin/python",
       "args": ["-m", "bai_test_mcp.mcp.server"],
-      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "cwd": "/Users/bettehub/Dev/bai/bai-autotest",
       "env": {
-        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src"
+        "PYTHONPATH": "/Users/bettehub/Dev/bai/bai-autotest/src"
       }
     },
     "filesystem": {
@@ -139,13 +139,13 @@ generate_test 도구로 "User Login" 시나리오의 Playwright 테스트를 생
 
 3. **패키지 설치 확인**
    ```bash
-   cd /Users/bettehub/Dev/devai/bai-autotest
+   cd /Users/bettehub/Dev/bai/bai-autotest
    pip install -e .
    ```
 
 4. **MCP 서버 직접 테스트**
    ```bash
-   cd /Users/bettehub/Dev/devai/bai-autotest
+   cd /Users/bettehub/Dev/bai/bai-autotest
    /Users/bettehub/.pyenv/versions/3.11.9/bin/python -m bai_test_mcp.mcp.server
    ```
 
@@ -176,9 +176,9 @@ chmod 644 ~/Library/Application\ Support/Claude/claude_desktop_config.json
     "bai-autotest-dev": {
       "command": "/Users/bettehub/.pyenv/versions/3.11.9/bin/python",
       "args": ["-m", "bai_test_mcp.mcp.server"],
-      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "cwd": "/Users/bettehub/Dev/bai/bai-autotest",
       "env": {
-        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src",
+        "PYTHONPATH": "/Users/bettehub/Dev/bai/bai-autotest/src",
         "ENV": "development"
       }
     },
@@ -201,9 +201,9 @@ chmod 644 ~/Library/Application\ Support/Claude/claude_desktop_config.json
     "bai-autotest": {
       "command": "/Users/bettehub/.pyenv/versions/3.11.9/bin/python",
       "args": ["-m", "bai_test_mcp.mcp.server", "--debug"],
-      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "cwd": "/Users/bettehub/Dev/bai/bai-autotest",
       "env": {
-        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src",
+        "PYTHONPATH": "/Users/bettehub/Dev/bai/bai-autotest/src",
         "DEBUG": "true"
       }
     }
