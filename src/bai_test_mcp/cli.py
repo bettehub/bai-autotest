@@ -150,9 +150,9 @@ def templates():
     
     click.echo("\n💡 Usage:")
     click.echo("  # Use built-in template")
-    click.echo("  bai-test-mcp generate auth.md -f custom -l java --template java_junit")
+    click.echo("  bai-autotest generate auth.md -f custom -l java --template java_junit")
     click.echo("\n  # Use custom template file")
-    click.echo("  bai-test-mcp generate auth.md -f custom -l kotlin --template ./my-template.yaml")
+    click.echo("  bai-autotest generate auth.md -f custom -l kotlin --template ./my-template.yaml")
     click.echo("\n📑 Custom Template Example:")
     click.echo("  See: examples/custom_template.yaml")
 

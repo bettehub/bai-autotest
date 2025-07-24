@@ -106,7 +106,7 @@ class PytestGenerator(TestGenerator):
         """Generate synchronous fixtures."""
         return f"""@pytest.fixture
 def client():
-    """HTTP client for API testing."""
+    '''HTTP client for API testing.'''
     session = requests.Session()
     session.headers.update({{
         'Content-Type': 'application/json',
@@ -117,14 +117,15 @@ def client():
 
 @pytest.fixture
 def base_url():
-    """Base URL for API endpoints."""
-    return "{self.base_url}""""
+    '''Base URL for API endpoints.'''
+    return "{self.base_url}"
+"""
     
     def _generate_async_fixtures(self) -> str:
         """Generate asynchronous fixtures."""
         return f"""@pytest.fixture
 async def client():
-    """Async HTTP client for API testing."""
+    '''Async HTTP client for API testing.'''
     async with aiohttp.ClientSession() as session:
         session.headers.update({{
             'Content-Type': 'application/json',
@@ -135,8 +136,9 @@ async def client():
 
 @pytest.fixture
 def base_url():
-    """Base URL for API endpoints."""
-    return "{self.base_url}""""
+    '''Base URL for API endpoints.'''
+    return "{self.base_url}"
+"""
     
     def _generate_api_call(self, step: TestStep) -> str:
         """Generate code for API calls."""

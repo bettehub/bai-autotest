@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "bai-autotest": {
+      "command": "python",
+      "args": [
+        "-m",
+        "bai_test_mcp.mcp.server"
+      ],
+      "cwd": "/Users/bettehub/Dev/devai/bai-autotest",
+      "env": {
+        "PYTHONPATH": "/Users/bettehub/Dev/devai/bai-autotest/src"
+      }
+    }
+  }
+}

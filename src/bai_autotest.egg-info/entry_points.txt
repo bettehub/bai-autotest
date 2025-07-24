@@ -1,0 +1,2 @@
+[console_scripts]
+bai-autotest = bai_test_mcp.cli:main

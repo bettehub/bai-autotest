@@ -51,7 +51,7 @@ bai-autotest = "bai_test_mcp.cli:main"
 "Documentation" = "https://github.com/bettehub/bai-autotest/wiki"
 
 [tool.setuptools]
-package-dir = {"": "src"}
+package-dir = {""= "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -110,7 +110,7 @@ from unittest.mock import patch, Mock""",
                 "class_end": """\nif __name__ == '__main__':
     unittest.main()""",
                 "setup": """    def setUp(self):
-        self.base_url = "${base_url}"""",
+        self.base_url = "${base_url}" """,
                 "test_start": """    def test_${method_name}(self):
         \"\"\"${description}\"\"\"""",
                 "test_end": "",

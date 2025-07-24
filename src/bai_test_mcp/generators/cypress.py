@@ -94,10 +94,10 @@ class CypressGenerator(TestGenerator):
         elif 'type' in action or 'enter' in action or '입력' in action:
             if '이메일' in step.action:
                 text = step.data.get('text', 'user@example.com')
-                return f"    cy.get('input[type="email"]').type('{text}');"
+                return f"    cy.get('input[type=\"email\"]').type('{text}');"
             elif '비밀번호' in step.action or 'password' in action:
                 text = step.data.get('text', 'password123')
-                return f"    cy.get('input[type="password"]').type('{text}');"
+                return f"    cy.get('input[type=\"password\"]').type('{text}');"
             else:
                 selector = self._extract_selector(step.action)
                 text = step.data.get('text', '')
